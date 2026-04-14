@@ -1,0 +1,863 @@
+/* =========================================
+   1. CONFIGURACIÓN BASE
+   ========================================= */
+@font-face {
+    font-family: 'DJR';
+    src: url(../fonts/FormaDJRDisplay-Bold.woff2) format('woff2'),
+         url(../fonts/FormaDJRDisplay-Bold.woff) format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'helvetica';
+    src: url(../fonts/Helvetica.woff2) format('woff2'),
+         url(../fonts/Helvetica.woff) format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'helvetica', sans-serif;
+    background-color: white;
+    padding-top: 80px;
+    line-height: 1.5;
+    color: #1a1a1a;
+    opacity: 0;
+    animation: fadeInBody 0.8s ease forwards;
+}
+
+@keyframes fadeInBody {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* =========================================
+   2. MENÚ MODERNO
+   ========================================= */
+.menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(12px);
+    z-index: 9999;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.menu.scrolled {
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.nav-container {
+    width: 90%;
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.logo {
+    font-family: 'DJR', sans-serif;
+    font-size: 1.8rem;
+    color: #000;
+    letter-spacing: -0.02em;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.02);
+}
+
+.logo span { color: #DB358B; }
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #1a1a1a;
+    font-weight: 500;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    transition: color 0.2s ease;
+    position: relative;
+}
+
+.nav-links li a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #DB358B;
+    transition: width 0.3s ease;
+}
+
+.nav-links li a:hover::after {
+    width: 100%;
+}
+
+.nav-links li a:hover { color: #DB358B; }
+
+.btn-contacto {
+    background: #FDC62B;
+    padding: 0.6rem 1.4rem !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+}
+
+.btn-contacto::after {
+    display: none !important;
+}
+
+.btn-contacto:hover {
+    transform: scale(1.02);
+    background: #e5b200 !important;
+}
+
+.hamburger {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #DB358B;
+}
+
+/* =========================================
+   3. TÍTULOS GLOBALES
+   ========================================= */
+h1 {
+    font-family: 'DJR', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+}
+
+/* =========================================
+   4. SECCIÓN ¿QUI SOM?
+   ========================================= */
+.empresa {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    max-width: 1280px;
+    margin: 4rem auto;
+    padding: 0 5%;
+    align-items: center;
+}
+
+#quisom {
+    font-size: clamp(3rem, 8vw, 6rem);
+    margin: 0;
+}
+
+#contenedor {
+    background-image: url(../img/Bringtion\ fondo.png);
+    background-size: cover;
+    background-position: center;
+    min-height: 350px;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+#contenedor:hover {
+    transform: scale(1.01);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.fondop {
+    background: #db358b;
+    padding: 2.5rem;
+    transition: transform 0.3s ease;
+}
+
+.fondop:hover {
+    transform: translateX(5px);
+}
+
+#textempresa {
+    width: 100%;
+    margin: 0;
+    color: white;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* =========================================
+   5. SECCIÓN ¿QUE FEM?
+   ========================================= */
+.nuestros_servicios {
+    max-width: 1280px;
+    margin: 6rem auto;
+    padding: 0 5%;
+}
+
+#quefem {
+    margin-bottom: 3rem;
+}
+
+#contenedor2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+#piso1, #piso2 {
+    display: contents;
+}
+
+#subpiso, #subpiso2, #subpiso3, #subpiso4 {
+    padding: 2rem;
+    transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+#subpiso { animation-delay: 0.1s; }
+#subpiso2 { animation-delay: 0.2s; }
+#subpiso3 { animation-delay: 0.3s; }
+#subpiso4 { animation-delay: 0.4s; }
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#subpiso:hover, #subpiso2:hover, 
+#subpiso3:hover, #subpiso4:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 35px -12px rgba(0,0,0,0.25);
+}
+
+#subpiso { background: #F431C6; }
+#subpiso2 { background: #3354F2; }
+#subpiso3 { background: #3AB8BB; }
+#subpiso4 { background: #FFDA3E; }
+
+#icono, #icono2, #icono3, #icono4 {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 1.5rem auto;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: all 0.4s ease;
+}
+
+#subpiso:hover #icono,
+#subpiso2:hover #icono2,
+#subpiso3:hover #icono3,
+#subpiso4:hover #icono4 {
+    transform: scale(1.08) rotate(3deg);
+}
+
+#icono { background-image: url(../img/packaging-05.png); }
+#icono2 { background-image: url(../img/web-06.png); }
+#icono3 { background-image: url(../img/publicidad.png); }
+#icono4 { background-image: url(../img/editorial-04.png); }
+
+#textpackging, #textweb, #textpublicitat, #texteditorial {
+    width: 100%;
+    margin: 0;
+    color: white;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    text-align: center;
+}
+
+#subpiso4 #texteditorial { color: #1a1a1a; }
+
+#subpiso a, #subpiso2 a, #subpiso3 a, #subpiso4 a {
+    text-decoration: none;
+    display: block;
+}
+
+/* =========================================
+   6. PACKAGING
+   ========================================= */
+.packaging {
+    max-width: 1280px;
+    margin: 6rem auto;
+    padding: 0 5%;
+}
+
+#titolpackaging {
+    background: #F8D6E8;
+    display: inline-block;
+    padding: 0.25rem 1.5rem;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: #D9368B;
+    transition: all 0.3s ease;
+}
+
+#titolpackaging:hover {
+    transform: translateX(5px);
+    background: #f0c8df;
+}
+
+#contenedor3 {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 2rem;
+}
+
+#textprincipal {
+    width: 100%;
+    margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+#mockup {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+#aura, #tarjeta, #caja, #estructural {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 180px;
+    transition: all 0.4s ease;
+}
+
+#aura:hover, #tarjeta:hover, #caja:hover, #estructural:hover {
+    transform: scale(1.03) translateY(-5px);
+}
+
+#tarjeta img, #caja img, #estructural img {
+    width: 100%;
+    height: auto;
+    max-height: 180px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+#textdescripcio {
+    grid-column: span 2;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #eee;
+    line-height: 1.7;
+}
+
+/* =========================================
+   7. PUBLICITAT - NUEVO DISEÑO COMPACTO
+   ========================================= */
+.publicitat {
+    background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
+    padding: 4rem 5%;
+    margin: 2rem 0;
+}
+
+.publicitat-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 2.5rem auto;
+}
+
+.publicitat-header h1 {
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, #3AB8BB, #3354F2);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.publicitat-subtitle {
+    font-size: 1.1rem;
+    color: #3AB8BB;
+    font-weight: 500;
+}
+
+/* Tarjeta principal */
+.publicitat-card {
+    display: grid;
+    grid-template-columns: 1fr 0.8fr;
+    gap: 3rem;
+    background: white;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+    margin-bottom: 2.5rem;
+    transition: all 0.4s ease;
+}
+
+.publicitat-card:hover {
+    box-shadow: 0 30px 50px rgba(0,0,0,0.1);
+    transform: translateY(-4px);
+}
+
+.publicitat-card-content {
+    padding: 2.5rem;
+}
+
+.publicitat-badge {
+    display: inline-block;
+    background: #3AB8BB10;
+    color: #3AB8BB;
+    padding: 0.3rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1.5rem;
+    border-left: 3px solid #3AB8BB;
+}
+
+.publicitat-card-content h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+.publicitat-card-content p {
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+}
+
+.publicitat-card-content p:last-of-type {
+    margin-bottom: 0;
+}
+
+.publicitat-quote {
+    font-style: italic;
+    color: #3AB8BB;
+    font-weight: 500;
+    border-left: 3px solid #3AB8BB;
+    padding-left: 1rem;
+    margin: 1rem 0;
+}
+
+.publicitat-card-image {
+    background: linear-gradient(135deg, #f0f2ff, #faf5ff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.publicitat-card-image img {
+    max-width: 100%;
+    height: auto;
+    transition: transform 0.4s ease;
+}
+
+.publicitat-card-image img:hover {
+    transform: scale(1.02);
+}
+
+/* Servicios específicos */
+.publicitat-serveis {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.servei-item {
+    text-align: center;
+    padding: 1.5rem;
+    background: white;
+    transition: all 0.4s ease;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+}
+
+.servei-item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 30px rgba(0,0,0,0.08);
+}
+
+.servei-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem auto;
+    transition: transform 0.3s ease;
+}
+
+.servei-item:hover .servei-icon {
+    transform: scale(1.1);
+}
+
+.servei-item h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.servei-item p {
+    color: #666;
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+/* Preview del tríptico */
+.publicitat-preview {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+    background: #3AB8BB;
+    padding: 2rem;
+}
+
+.preview-text h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: white;
+}
+
+.preview-text p {
+    color: #fff;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.preview-image {
+    text-align: center;
+}
+
+.preview-image img {
+    max-width: 100%;
+    height: auto;
+    transition: all 0.4s ease;
+}
+
+.preview-image img:hover {
+    transform: scale(1.02);
+}
+
+/* =========================================
+   8. WEB
+   ========================================= */
+.web {
+    background: #f8f9ff;
+    padding: 5rem 5%;
+    margin: 4rem 0;
+}
+
+#contenedor4 {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+#titoll {
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 1rem;
+}
+
+#textdesenvolupament {
+    width: 100%;
+    margin: 0;
+}
+
+#subpiso8 {
+    background: #3354F2;
+    padding: 2rem;
+    color: white;
+    transition: all 0.4s ease;
+}
+
+#subpiso8:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 25px 40px -12px rgba(51, 84, 242, 0.4);
+}
+
+#imatge {
+    background-image: url(../img/app_pantalla.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 300px;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+
+#imatge:hover {
+    transform: scale(1.02);
+}
+
+#textpagines {
+    width: 100%;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+/* =========================================
+   9. EDITORIAL
+   ========================================= */
+.editorial {
+    max-width: 1280px;
+    margin: 6rem auto;
+    padding: 0 5%;
+}
+
+#contenedor5 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+#subpiso9, #subpiso10 {
+    background: #F4F3DC;
+    padding: 2rem;
+    transition: all 0.4s ease;
+}
+
+#subpiso9:hover, #subpiso10:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 30px rgba(0,0,0,0.08);
+}
+
+#texttitol {
+    color: #FDC62B;
+    margin-bottom: 1rem;
+}
+
+#imgrevista {
+    background-image: url(../img/revista\ sin\ fondo.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 200px;
+    margin-top: 1rem;
+    transition: transform 0.3s ease;
+}
+
+#imgrevista:hover {
+    transform: scale(1.02);
+}
+
+#llibre {
+    background-image: url(../img/9866173_225.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    min-height: 200px;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+
+#llibre:hover {
+    transform: scale(1.02);
+}
+
+#periodic {
+    background-image: url(../img/mockup\ peridoico\ sin\ fondo.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 150px;
+    margin-top: 1rem;
+    transition: transform 0.3s ease;
+}
+
+#periodic:hover {
+    transform: scale(1.02);
+}
+
+/* =========================================
+   10. IMAGEN FINAL
+   ========================================= */
+.imatge img {
+    width: 100%;
+    display: block;
+    transition: all 0.4s ease;
+}
+
+.imatge img:hover {
+    opacity: 0.92;
+    transform: scale(1.01);
+}
+
+/* =========================================
+   11. CONTACTO
+   ========================================= */
+.contacto {
+    background: #DB358B;
+    padding: 5rem 5%;
+    color: white;
+}
+
+.contacto-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.titol-contacto {
+    color: white !important;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.contacto-grid {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+}
+
+.contacto-col h3 {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+}
+
+.contacto-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.contacto-item:hover {
+    transform: translateX(6px);
+    opacity: 0.85;
+}
+
+.contacto-item img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.contacto-item:hover img {
+    transform: scale(1.1);
+}
+
+/* =========================================
+   12. RESPONSIVE
+   ========================================= */
+@media (max-width: 992px) {
+    .hamburger {
+        display: block;
+    }
+    
+    .nav-links {
+        position: fixed;
+        top: 80px;
+        left: 100%;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background: white;
+        flex-direction: column;
+        justify-content: center;
+        gap: 2rem;
+        transition: left 0.3s ease;
+    }
+    
+    .nav-links.active {
+        left: 0;
+    }
+    
+    .empresa {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    #contenedor2 {
+        grid-template-columns: 1fr;
+    }
+    
+    .packaging #contenedor3,
+    #contenedor4,
+    #contenedor5 {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    #mockup {
+        grid-template-columns: 1fr;
+    }
+    
+    #textdescripcio {
+        grid-column: span 1;
+    }
+    
+    /* Responsive Publicidad */
+    .publicitat-card {
+        grid-template-columns: 1fr;
+    }
+    
+    .publicitat-serveis {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .publicitat-preview {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .contacto-grid {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+    
+    .contacto-col {
+        text-align: center;
+    }
+    
+    .contacto-item {
+        justify-content: center;
+    }
+    
+    #icono, #icono2, #icono3, #icono4 {
+        width: 90px;
+        height: 90px;
+    }
+}
+
+/* =========================================
+   13. ANIMACIONES SCROLL REVEAL
+   ========================================= */
+@media (prefers-reduced-motion: no-preference) {
+    .empresa, .packaging, .publicitat, .web, .editorial, .contacto {
+        opacity: 0;
+        transform: translateY(40px);
+        animation: fadeInUp 0.8s ease forwards;
+    }
+    
+    .empresa { animation-delay: 0.1s; }
+    .packaging { animation-delay: 0.2s; }
+    .publicitat { animation-delay: 0.3s; }
+    .web { animation-delay: 0.4s; }
+    .editorial { animation-delay: 0.5s; }
+    .contacto { animation-delay: 0.6s; }
+}
